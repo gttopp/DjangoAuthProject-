@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+</head>
+<body>
+    <h1>YouTube Video Downloader</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="url">Enter YouTube Video URL:</label><br>
+        <input type="text" id="url" name="url" value="{{ video_url }}"><br><br>
+        <button type="submit">Download</button>
+    </form>
+
+    {% if download_link %}
+        <h2>Download Link</h2>
+        <a href="{{ download_link }}" target="_blank">Click here to download the video</a>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
